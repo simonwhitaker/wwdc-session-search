@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SWSessionsDataSource : NSObject
+@interface SWSessionsDataSource : NSObject <NSTableViewDataSource>
+
+@property (nonatomic) NSString *searchTerm;
 
 @end

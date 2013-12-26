@@ -14,21 +14,10 @@
 		F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D62F3186CCE50002B00EC /* SWAppDelegate.m */; };
 		F49D62F7186CCE50002B00EC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49D62F5186CCE50002B00EC /* MainMenu.xib */; };
 		F49D62F9186CCE50002B00EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49D62F8186CCE50002B00EC /* Images.xcassets */; };
-		F49D6300186CCE50002B00EC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D62FF186CCE50002B00EC /* XCTest.framework */; };
-		F49D6301186CCE50002B00EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D62E0186CCE50002B00EC /* Cocoa.framework */; };
-		F49D6309186CCE50002B00EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F49D6307186CCE50002B00EC /* InfoPlist.strings */; };
-		F49D630B186CCE50002B00EC /* WWDC_Video_SearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D630A186CCE50002B00EC /* WWDC_Video_SearchTests.m */; };
+		F49D6319186CD01D002B00EC /* SWSessionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */; };
+		F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D631A186CD540002B00EC /* libsqlite3.dylib */; };
+		F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = F49D6321186CE49F002B00EC /* sessions.sqlite3 */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F49D6302186CCE50002B00EC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F49D62D5186CCE50002B00EC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F49D62DC186CCE50002B00EC;
-			remoteInfo = "WWDC Video Search";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F49D62DD186CCE50002B00EC /* WWDC Video Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC Video Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,11 +34,11 @@
 		F49D62F3186CCE50002B00EC /* SWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAppDelegate.m; sourceTree = "<group>"; };
 		F49D62F6186CCE50002B00EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F49D62F8186CCE50002B00EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F49D62FE186CCE50002B00EC /* WWDC Video SearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WWDC Video SearchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49D62FF186CCE50002B00EC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F49D6306186CCE50002B00EC /* WWDC Video SearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WWDC Video SearchTests-Info.plist"; sourceTree = "<group>"; };
-		F49D6308186CCE50002B00EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F49D630A186CCE50002B00EC /* WWDC_Video_SearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWDC_Video_SearchTests.m; sourceTree = "<group>"; };
+		F49D6317186CD01D002B00EC /* SWSessionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSessionsDataSource.h; sourceTree = "<group>"; };
+		F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSessionsDataSource.m; sourceTree = "<group>"; };
+		F49D631A186CD540002B00EC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F49D6321186CE49F002B00EC /* sessions.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sessions.sqlite3; path = Assets/sessions.sqlite3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,16 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */,
 				F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F49D62FB186CCE50002B00EC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F49D6301186CCE50002B00EC /* Cocoa.framework in Frameworks */,
-				F49D6300186CCE50002B00EC /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				F49D62E6186CCE50002B00EC /* WWDC Video Search */,
-				F49D6304186CCE50002B00EC /* WWDC Video SearchTests */,
 				F49D62DF186CCE50002B00EC /* Frameworks */,
 				F49D62DE186CCE50002B00EC /* Products */,
 			);
@@ -87,7 +67,6 @@
 			isa = PBXGroup;
 			children = (
 				F49D62DD186CCE50002B00EC /* WWDC Video Search.app */,
-				F49D62FE186CCE50002B00EC /* WWDC Video SearchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +74,7 @@
 		F49D62DF186CCE50002B00EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F49D631A186CD540002B00EC /* libsqlite3.dylib */,
 				F49D62E0186CCE50002B00EC /* Cocoa.framework */,
 				F49D62FF186CCE50002B00EC /* XCTest.framework */,
 				F49D62E2186CCE50002B00EC /* Other Frameworks */,
@@ -117,8 +97,11 @@
 			children = (
 				F49D62F2186CCE50002B00EC /* SWAppDelegate.h */,
 				F49D62F3186CCE50002B00EC /* SWAppDelegate.m */,
+				F49D6317186CD01D002B00EC /* SWSessionsDataSource.h */,
+				F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */,
 				F49D62F5186CCE50002B00EC /* MainMenu.xib */,
 				F49D62F8186CCE50002B00EC /* Images.xcassets */,
+				F49D631C186CE26F002B00EC /* Assets */,
 				F49D62E7186CCE50002B00EC /* Supporting Files */,
 			);
 			path = "WWDC Video Search";
@@ -136,22 +119,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F49D6304186CCE50002B00EC /* WWDC Video SearchTests */ = {
+		F49D631C186CE26F002B00EC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				F49D630A186CCE50002B00EC /* WWDC_Video_SearchTests.m */,
-				F49D6305186CCE50002B00EC /* Supporting Files */,
+				F49D6321186CE49F002B00EC /* sessions.sqlite3 */,
 			);
-			path = "WWDC Video SearchTests";
-			sourceTree = "<group>";
-		};
-		F49D6305186CCE50002B00EC /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F49D6306186CCE50002B00EC /* WWDC Video SearchTests-Info.plist */,
-				F49D6307186CCE50002B00EC /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,24 +147,6 @@
 			productReference = F49D62DD186CCE50002B00EC /* WWDC Video Search.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F49D62FD186CCE50002B00EC /* WWDC Video SearchTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F49D6311186CCE50002B00EC /* Build configuration list for PBXNativeTarget "WWDC Video SearchTests" */;
-			buildPhases = (
-				F49D62FA186CCE50002B00EC /* Sources */,
-				F49D62FB186CCE50002B00EC /* Frameworks */,
-				F49D62FC186CCE50002B00EC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F49D6303186CCE50002B00EC /* PBXTargetDependency */,
-			);
-			name = "WWDC Video SearchTests";
-			productName = "WWDC Video SearchTests";
-			productReference = F49D62FE186CCE50002B00EC /* WWDC Video SearchTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -201,11 +156,6 @@
 				CLASSPREFIX = SW;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Netcetera;
-				TargetAttributes = {
-					F49D62FD186CCE50002B00EC = {
-						TestTargetID = F49D62DC186CCE50002B00EC;
-					};
-				};
 			};
 			buildConfigurationList = F49D62D8186CCE50002B00EC /* Build configuration list for PBXProject "WWDC Video Search" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,7 +171,6 @@
 			projectRoot = "";
 			targets = (
 				F49D62DC186CCE50002B00EC /* WWDC Video Search */,
-				F49D62FD186CCE50002B00EC /* WWDC Video SearchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,17 +181,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F49D62EB186CCE50002B00EC /* InfoPlist.strings in Resources */,
+				F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */,
 				F49D62F9186CCE50002B00EC /* Images.xcassets in Resources */,
 				F49D62F1186CCE50002B00EC /* Credits.rtf in Resources */,
 				F49D62F7186CCE50002B00EC /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F49D62FC186CCE50002B00EC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F49D6309186CCE50002B00EC /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,26 +197,11 @@
 			files = (
 				F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */,
 				F49D62ED186CCE50002B00EC /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F49D62FA186CCE50002B00EC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F49D630B186CCE50002B00EC /* WWDC_Video_SearchTests.m in Sources */,
+				F49D6319186CD01D002B00EC /* SWSessionsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F49D6303186CCE50002B00EC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F49D62DC186CCE50002B00EC /* WWDC Video Search */;
-			targetProxy = F49D6302186CCE50002B00EC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F49D62E9186CCE50002B00EC /* InfoPlist.strings */ = {
@@ -299,14 +226,6 @@
 				F49D62F6186CCE50002B00EC /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		F49D6307186CCE50002B00EC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F49D6308186CCE50002B00EC /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -406,46 +325,6 @@
 			};
 			name = Release;
 		};
-		F49D6312186CCE50002B00EC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WWDC Video Search.app/Contents/MacOS/WWDC Video Search";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WWDC Video Search/WWDC Video Search-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "WWDC Video SearchTests/WWDC Video SearchTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		F49D6313186CCE50002B00EC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WWDC Video Search.app/Contents/MacOS/WWDC Video Search";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WWDC Video Search/WWDC Video Search-Prefix.pch";
-				INFOPLIST_FILE = "WWDC Video SearchTests/WWDC Video SearchTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -463,14 +342,6 @@
 			buildConfigurations = (
 				F49D630F186CCE50002B00EC /* Debug */,
 				F49D6310186CCE50002B00EC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		F49D6311186CCE50002B00EC /* Build configuration list for PBXNativeTarget "WWDC Video SearchTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F49D6312186CCE50002B00EC /* Debug */,
-				F49D6313186CCE50002B00EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -11,5 +11,7 @@
 @interface SWAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSSearchField *searchField;
+@property (assign) IBOutlet NSTableView *tableView;
 
 @end

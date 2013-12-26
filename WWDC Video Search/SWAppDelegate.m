@@ -7,12 +7,28 @@
 //
 
 #import "SWAppDelegate.h"
+#import "SWSessionsDataSource.h"
+
+@interface SWAppDelegate() <NSTextFieldDelegate, NSTextDelegate>
+@property (nonatomic) SWSessionsDataSource *sessionsDataSource;
+@end
 
 @implementation SWAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    self.sessionsDataSource = [[SWSessionsDataSource alloc] init];
+    self.tableView.dataSource = self.sessionsDataSource;
+    
+    self.searchField.delegate = self;
+}
+
+#pragma mark - NSTextFieldDelegate methods
+
+- (void)controlTextDidChange:(NSNotification *)notification {
+    NSTextView *textView = (NSTextView*)(notification.userInfo[@"NSFieldEditor"]);
+    self.sessionsDataSource.searchTerm = textView.textStorage.string;
+    [self.tableView reloadData];
 }
 
 @end
