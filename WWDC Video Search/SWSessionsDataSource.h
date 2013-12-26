@@ -12,4 +12,6 @@
 
 @property (nonatomic) NSString *searchTerm;
 
+- (id)initWithSQLiteFilePath:(NSString*)dbFilePath;
+
 @end

@@ -15,9 +15,9 @@
 
 @implementation SWAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    self.sessionsDataSource = [[SWSessionsDataSource alloc] init];
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // Configure the table view's data source
+    self.sessionsDataSource = [[SWSessionsDataSource alloc] initWithSQLiteFilePath:[[NSBundle mainBundle] pathForResource:@"sessions.sqlite3" ofType:nil]];
     self.tableView.dataSource = self.sessionsDataSource;
     
     self.searchField.delegate = self;

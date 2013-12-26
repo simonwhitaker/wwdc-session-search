@@ -12,9 +12,26 @@
 @interface SWSessionsDataSource()
 @property (nonatomic) NSArray *results;
 @property (nonatomic) sqlite3 *db;
+@property (nonatomic) sqlite3_stmt *query;
 @end
 
 @implementation SWSessionsDataSource
+
+- (id)initWithSQLiteFilePath:(NSString *)dbFilePath {
+    self = [super init];
+    if (self) {
+        int result = sqlite3_open([dbFilePath UTF8String], &_db);
+        if (result == SQLITE_OK) {
+            NSString *query = @"SELECT docid, title, description FROM session WHERE session MATCH ?";
+            sqlite3_stmt *stmt;
+            int result = sqlite3_prepare_v2(self.db, [query UTF8String], -1, &stmt, NULL);
+            if (result == SQLITE_OK) {
+                self.query = stmt;
+            }
+        }
+    }
+    return self;
+}
 
 - (void)dealloc {
     if (self.db) {
@@ -22,10 +39,14 @@
     }
 }
 
+#pragma mark - Accessors
+
 - (void)setSearchTerm:(NSString *)searchTerm {
     _searchTerm = searchTerm;
     [self SW_fetchResults];
 }
+
+#pragma mark - NSTableViewDataSource methods
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [self.results count];
@@ -42,33 +63,19 @@
     }
 }
 
-#pragma mark - Accessors
-
-- (sqlite3 *)db {
-    if (!_db) {
-        NSString *filename = [[NSBundle mainBundle] pathForResource:@"sessions.sqlite3" ofType:nil];
-        int result = sqlite3_open([filename UTF8String], &_db);
-        if (result != SQLITE_OK) {
-            NSLog(@"Error on opening database: %s", sqlite3_errmsg(_db));
-        }
-    }
-    return _db;
-}
+#pragma mark - Private methods
 
 - (void)SW_fetchResults {
     NSMutableArray *mutableResults = [NSMutableArray array];
     
-    NSString *query = @"SELECT docid, title, description FROM session WHERE session MATCH ?";
-    sqlite3_stmt *stmt;
-    int result = sqlite3_prepare_v2(self.db, [query UTF8String], -1, &stmt, NULL);
-    if (result == SQLITE_OK) {
+    if (self.query && sqlite3_reset(self.query) == SQLITE_OK) {
         const char *searchTermUTF8String = [[self.searchTerm stringByAppendingString:@"*"] UTF8String];
-        result = sqlite3_bind_text(stmt, 1, searchTermUTF8String, -1, SQLITE_TRANSIENT);
+        int result = sqlite3_bind_text(self.query, 1, searchTermUTF8String, -1, SQLITE_TRANSIENT);
         if (result == SQLITE_OK) {
-            while (sqlite3_step(stmt) == SQLITE_ROW) {
-                int docid = sqlite3_column_int(stmt, 0);
-                const char *title = (const char*)sqlite3_column_text(stmt, 1);
-                const char *description = (const char*)sqlite3_column_text(stmt, 2);
+            while (sqlite3_step(self.query) == SQLITE_ROW) {
+                int docid = sqlite3_column_int(self.query, 0);
+                const char *title = (const char*)sqlite3_column_text(self.query, 1);
+                const char *description = (const char*)sqlite3_column_text(self.query, 2);
                 [mutableResults addObject:@{
                                             @"docid": @(docid),
                                             @"title": [NSString stringWithCString:title encoding:NSUTF8StringEncoding],
@@ -77,6 +84,7 @@
             }
         }
     }
+
     self.results = [NSArray arrayWithArray:mutableResults];
 }
 
