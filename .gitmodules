@@ -1,0 +1,3 @@
+[submodule "Vendor/wwdc-session-transcripts"]
+	path = Vendor/wwdc-session-transcripts
+	url = https://github.com/simonwhitaker/wwdc-session-transcripts.git
