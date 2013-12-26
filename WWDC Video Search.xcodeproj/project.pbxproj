@@ -17,6 +17,7 @@
 		F49D6319186CD01D002B00EC /* SWSessionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */; };
 		F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D631A186CD540002B00EC /* libsqlite3.dylib */; };
 		F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = F49D6321186CE49F002B00EC /* sessions.sqlite3 */; };
+		F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D83C67186CEF90006348E6 /* SWMainWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSessionsDataSource.m; sourceTree = "<group>"; };
 		F49D631A186CD540002B00EC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		F49D6321186CE49F002B00EC /* sessions.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sessions.sqlite3; path = Assets/sessions.sqlite3; sourceTree = SOURCE_ROOT; };
+		F4D83C66186CEF90006348E6 /* SWMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWMainWindowController.h; sourceTree = "<group>"; };
+		F4D83C67186CEF90006348E6 /* SWMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWMainWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 			children = (
 				F49D62F2186CCE50002B00EC /* SWAppDelegate.h */,
 				F49D62F3186CCE50002B00EC /* SWAppDelegate.m */,
+				F4D83C66186CEF90006348E6 /* SWMainWindowController.h */,
+				F4D83C67186CEF90006348E6 /* SWMainWindowController.m */,
 				F49D6317186CD01D002B00EC /* SWSessionsDataSource.h */,
 				F49D6318186CD01D002B00EC /* SWSessionsDataSource.m */,
 				F49D62F5186CCE50002B00EC /* MainMenu.xib */,
@@ -197,6 +202,7 @@
 			files = (
 				F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */,
 				F49D62ED186CCE50002B00EC /* main.m in Sources */,
+				F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */,
 				F49D6319186CD01D002B00EC /* SWSessionsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
