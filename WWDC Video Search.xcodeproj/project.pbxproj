@@ -155,7 +155,7 @@
 			attributes = {
 				CLASSPREFIX = SW;
 				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = Netcetera;
+				ORGANIZATIONNAME = "Simon Whitaker";
 			};
 			buildConfigurationList = F49D62D8186CCE50002B00EC /* Build configuration list for PBXProject "WWDC Video Search" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -344,6 +344,7 @@
 				F49D6310186CCE50002B00EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
