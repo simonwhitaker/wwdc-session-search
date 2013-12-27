@@ -7,6 +7,7 @@
 //
 
 #import "SWMainWindowController.h"
+#import "SWSessionsTableCellView.h"
 #import <sqlite3.h>
 
 static NSString const *kResultsSessionIdKey = @"sessionId";
@@ -104,8 +105,10 @@ static NSString const *kResultsDescriptionKey = @"description";
     
     NSString *identifier = tableColumn.identifier;
     if ([identifier isEqualToString:@"MainCell"]) {
-        NSTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
-        cellView.textField.stringValue = cellData[kResultsTitleKey];
+        SWSessionsTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
+        cellView.titleField.stringValue = cellData[kResultsTitleKey];
+        cellView.sessionIdField.stringValue = [cellData[kResultsSessionIdKey] description];
+        cellView.trackField.stringValue = @"Core OS";
         return cellView;
     }
     return nil;

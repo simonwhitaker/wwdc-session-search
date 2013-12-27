@@ -17,6 +17,7 @@
 		F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D631A186CD540002B00EC /* libsqlite3.dylib */; };
 		F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = F49D6321186CE49F002B00EC /* sessions.sqlite3 */; };
 		F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D83C67186CEF90006348E6 /* SWMainWindowController.m */; };
+		F4E334B4186E03DA0033D069 /* SWSessionsTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		F49D6321186CE49F002B00EC /* sessions.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sessions.sqlite3; path = Assets/sessions.sqlite3; sourceTree = SOURCE_ROOT; };
 		F4D83C66186CEF90006348E6 /* SWMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWMainWindowController.h; sourceTree = "<group>"; };
 		F4D83C67186CEF90006348E6 /* SWMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWMainWindowController.m; sourceTree = "<group>"; };
+		F4E334B2186E03DA0033D069 /* SWSessionsTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSessionsTableCellView.h; sourceTree = "<group>"; };
+		F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSessionsTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				F49D62F3186CCE50002B00EC /* SWAppDelegate.m */,
 				F4D83C66186CEF90006348E6 /* SWMainWindowController.h */,
 				F4D83C67186CEF90006348E6 /* SWMainWindowController.m */,
+				F4E334B2186E03DA0033D069 /* SWSessionsTableCellView.h */,
+				F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */,
 				F49D62F5186CCE50002B00EC /* MainMenu.xib */,
 				F49D62F8186CCE50002B00EC /* Images.xcassets */,
 				F49D631C186CE26F002B00EC /* Assets */,
@@ -195,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4E334B4186E03DA0033D069 /* SWSessionsTableCellView.m in Sources */,
 				F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */,
 				F49D62ED186CCE50002B00EC /* main.m in Sources */,
 				F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */,
