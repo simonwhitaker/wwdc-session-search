@@ -123,6 +123,7 @@ static NSString const *kResultsTrackKey = @"track";
         cellView.titleField.stringValue = cellData[kResultsTitleKey];
         cellView.sessionIdField.stringValue = [cellData[kResultsSessionIdKey] description];
         cellView.trackField.stringValue = cellData[kResultsTrackKey];
+        cellView.toolTip = cellData[kResultsDescriptionKey];
         return cellView;
     }
     return nil;
