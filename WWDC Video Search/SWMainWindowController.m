@@ -80,7 +80,8 @@ static NSString const *kResultsTrackKey = @"track";
 
 - (sqlite3_stmt *)searchResultsQuery {
     if (!_searchResultsQuery) {
-        NSString *queryString = @"SELECT docid, title, description, track FROM session WHERE session MATCH ?";
+        // session is a plain old table, session_fts is a virtual full text search table. See http://www.sqlite.org/fts3.html
+        NSString *queryString = @"SELECT session.* FROM session, session_fts WHERE session.session_id = session_fts.docid AND session_fts MATCH ?";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
@@ -93,7 +94,7 @@ static NSString const *kResultsTrackKey = @"track";
 
 - (sqlite3_stmt *)allSessionsQuery {
     if (!_allSessionsQuery) {
-        NSString *queryString = @"SELECT docid, title, description, track FROM session ORDER BY docid";
+        NSString *queryString = @"SELECT * FROM session ORDER BY session_id";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
