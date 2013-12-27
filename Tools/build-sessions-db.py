@@ -29,13 +29,14 @@ conn = sqlite3.connect(outpath)
 c = conn.cursor()
 
 # Create a table using full text search
-c.execute('CREATE VIRTUAL TABLE session USING fts4(title, description)')
+c.execute('CREATE VIRTUAL TABLE session USING fts4(title, description, track)')
 
 for session_id, session_info in data.items():
-    insert_query = 'INSERT INTO session (docid, title, description) values (%d, "%s", "%s")' % (
+    insert_query = 'INSERT INTO session (docid, title, description, track) values (%d, "%s", "%s", "%s")' % (
         int(session_id),
         session_info[':title'],
         session_info[':description'],
+        session_info[':track'],
     )
     c.execute(insert_query)
     

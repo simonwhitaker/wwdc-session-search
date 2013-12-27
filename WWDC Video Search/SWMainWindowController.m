@@ -13,6 +13,7 @@
 static NSString const *kResultsSessionIdKey = @"sessionId";
 static NSString const *kResultsTitleKey = @"title";
 static NSString const *kResultsDescriptionKey = @"description";
+static NSString const *kResultsTrackKey = @"track";
 
 @interface SWMainWindowController()
 @property (nonatomic) IBOutlet NSTableView *tableView;
@@ -79,7 +80,7 @@ static NSString const *kResultsDescriptionKey = @"description";
 
 - (sqlite3_stmt *)searchResultsQuery {
     if (!_searchResultsQuery) {
-        NSString *queryString = @"SELECT docid, title, description FROM session WHERE session MATCH ?";
+        NSString *queryString = @"SELECT docid, title, description, track FROM session WHERE session MATCH ?";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
@@ -92,7 +93,7 @@ static NSString const *kResultsDescriptionKey = @"description";
 
 - (sqlite3_stmt *)allSessionsQuery {
     if (!_allSessionsQuery) {
-        NSString *queryString = @"SELECT docid, title, description FROM session ORDER BY docid";
+        NSString *queryString = @"SELECT docid, title, description, track FROM session ORDER BY docid";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
@@ -122,7 +123,7 @@ static NSString const *kResultsDescriptionKey = @"description";
         SWSessionsTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
         cellView.titleField.stringValue = cellData[kResultsTitleKey];
         cellView.sessionIdField.stringValue = [cellData[kResultsSessionIdKey] description];
-        cellView.trackField.stringValue = @"Core OS";
+        cellView.trackField.stringValue = cellData[kResultsTrackKey];
         return cellView;
     }
     return nil;
@@ -148,10 +149,12 @@ static NSString const *kResultsDescriptionKey = @"description";
             int docid = sqlite3_column_int(query, 0);
             const char *title = (const char*)sqlite3_column_text(query, 1);
             const char *description = (const char*)sqlite3_column_text(query, 2);
+            const char *track = (const char*)sqlite3_column_text(query, 3);
             [mutableResults addObject:@{
                 kResultsSessionIdKey: @(docid),
                 kResultsTitleKey: [NSString stringWithCString:title encoding:NSUTF8StringEncoding],
                 kResultsDescriptionKey: [NSString stringWithCString:description encoding:NSUTF8StringEncoding],
+                kResultsTrackKey: [NSString stringWithCString:track encoding:NSUTF8StringEncoding],
             }];
         }
     }
