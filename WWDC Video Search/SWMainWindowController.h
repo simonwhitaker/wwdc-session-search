@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SWMainWindowController : NSWindowController
+@interface SWMainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
 
-@property (nonatomic) NSTableView *tableView;
+@property (nonatomic) NSString *searchTerm;
 
 @end
