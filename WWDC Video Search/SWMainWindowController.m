@@ -48,8 +48,6 @@ static NSString const *kResultsTrackKey = @"track";
 #pragma mark - Event handlers
 
 - (void)keyDown:(NSEvent *)theEvent {
-    NSLog(@"Got keyDown event: %@", theEvent);
-    
     unichar keyCharacter = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
     if (self.tableView.selectedRow >= 0 && (keyCharacter == NSEnterCharacter || keyCharacter == NSCarriageReturnCharacter)) {
         
