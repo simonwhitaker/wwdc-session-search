@@ -106,6 +106,10 @@ static NSString const *kResultsTrackKey = @"track";
     _searchTerm = searchTerm;
     [self SW_fetchResults];
     [self.tableView reloadData];
+    if ([self.results count] > 0) {
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+        [self.tableView selectRowIndexes:indexSet byExtendingSelection:NO];
+    }
 }
 
 #pragma mark - NSTableViewDataSource methods
