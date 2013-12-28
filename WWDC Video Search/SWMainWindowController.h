@@ -11,5 +11,6 @@
 @interface SWMainWindowController : NSWindowController <NSTableViewDataSource, NSTableViewDelegate>
 
 @property (nonatomic) NSString *searchTerm;
+@property (nonatomic) NSTableView *tableView;
 
 @end

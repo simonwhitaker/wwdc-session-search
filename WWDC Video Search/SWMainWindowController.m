@@ -17,7 +17,6 @@ static NSString const *kResultsDescriptionKey = @"description";
 static NSString const *kResultsTrackKey = @"track";
 
 @interface SWMainWindowController()
-@property (nonatomic) IBOutlet NSTableView *tableView;
 @property (nonatomic) NSString *databaseFilePath;
 @property (nonatomic) NSArray *results;
 @property (nonatomic) sqlite3 *db;
@@ -46,18 +45,21 @@ static NSString const *kResultsTrackKey = @"track";
     }
 }
 
+- (void)setTableView:(NSTableView *)tableView {
+    if (tableView != _tableView) {
+        _tableView = tableView;
+        tableView.dataSource = self;
+        tableView.delegate = self;
+        tableView.doubleAction = @selector(SW_handleDoubleClick:);
+    }
+}
+
 #pragma mark - Event handlers
 
 - (void)keyDown:(NSEvent *)theEvent {
     unichar keyCharacter = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
     if (self.tableView.selectedRow >= 0 && (keyCharacter == NSEnterCharacter || keyCharacter == NSCarriageReturnCharacter)) {
-        
-        NSDictionary *data = self.results[self.tableView.selectedRow];
-        NSNumber *sessionId = data[kResultsSessionIdKey];
-        
-        NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/wwdc/videos/index.php?id=%@", sessionId];
-        NSURL *url = [NSURL URLWithString:urlString];
-        [[NSWorkspace sharedWorkspace] openURL:url];
+        [self SW_launchWebsiteForRow:self.tableView.selectedRow];
     } else {
         // Pass on the key event
         [self interpretKeyEvents:@[theEvent]];
@@ -179,6 +181,19 @@ static NSString const *kResultsTrackKey = @"track";
     }
     
     self.results = [NSArray arrayWithArray:mutableResults];
+}
+
+- (void)SW_handleDoubleClick:(id)sender {
+    [self SW_launchWebsiteForRow:self.tableView.clickedRow];
+}
+
+- (void)SW_launchWebsiteForRow:(NSInteger)row {
+    NSDictionary *data = self.results[row];
+    NSNumber *sessionId = data[kResultsSessionIdKey];
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/wwdc/videos/index.php?id=%@", sessionId];
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
 
 @end

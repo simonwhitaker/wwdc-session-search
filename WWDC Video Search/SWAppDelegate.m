@@ -10,7 +10,7 @@
 #import "SWMainWindowController.h"
 
 @interface SWAppDelegate() <NSTextFieldDelegate, NSTextDelegate>
-@property (nonatomic) IBOutlet SWMainWindowController *mainWindowController;
+@property (nonatomic) SWMainWindowController *mainWindowController;
 @end
 
 @implementation SWAppDelegate
@@ -19,6 +19,10 @@
     // Configure the search field
     self.searchField.delegate = self;
     [self.searchField becomeFirstResponder];
+    
+    // Configure the main window controller
+    self.mainWindowController = [[SWMainWindowController alloc] initWithWindow:self.window];
+    self.mainWindowController.tableView = self.tableView;
 }
 
 #pragma mark - NSTextFieldDelegate methods
