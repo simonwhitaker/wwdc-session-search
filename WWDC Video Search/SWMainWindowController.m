@@ -11,7 +11,8 @@
 
 #import <sqlite3.h>
 
-static NSString const *kResultsSessionIdKey = @"sessionId";
+static NSString const *kResultsYearKey = @"year";
+static NSString const *kResultsSessionNumberKey = @"session_number";
 static NSString const *kResultsTitleKey = @"title";
 static NSString const *kResultsDescriptionKey = @"description";
 static NSString const *kResultsTrackKey = @"track";
@@ -82,7 +83,7 @@ static NSString const *kResultsTrackKey = @"track";
 - (sqlite3_stmt *)searchResultsQuery {
     if (!_searchResultsQuery) {
         // session is a plain old table, session_fts is a virtual full text search table. See http://www.sqlite.org/fts3.html
-        NSString *queryString = @"SELECT session.* FROM session, session_fts WHERE session.session_id = session_fts.docid AND session_fts MATCH ?";
+        NSString *queryString = @"SELECT s.year, s.session_number, s.title, s.description, s.track FROM session s, session_fts WHERE s.rowid = session_fts.docid AND session_fts MATCH ?";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
@@ -95,7 +96,7 @@ static NSString const *kResultsTrackKey = @"track";
 
 - (sqlite3_stmt *)allSessionsQuery {
     if (!_allSessionsQuery) {
-        NSString *queryString = @"SELECT * FROM session ORDER BY session_id";
+        NSString *queryString = @"SELECT year, session_number, title, description, track FROM session ORDER BY year DESC, session_number";
         sqlite3_stmt *stmt;
         int result = sqlite3_prepare_v2(self.db, [queryString UTF8String], -1, &stmt, NULL);
         if (result == SQLITE_OK) {
@@ -126,11 +127,23 @@ static NSString const *kResultsTrackKey = @"track";
     if (standardColors == nil) {
         standardColors = @{
             @"Core OS": [NSColor colorWithDeviceRed:0.36 green:0.80 blue:0.75 alpha:1.0],
+            
+            @"Essentials": [NSColor colorWithDeviceRed:0.49 green:0.66 blue:0.99 alpha:1.0],
             @"Frameworks": [NSColor colorWithDeviceRed:0.49 green:0.66 blue:0.99 alpha:1.0],
+            
             @"Graphics and Games": [NSColor colorWithDeviceRed:1.00 green:0.84 blue:0.24 alpha:1.0],
+            @"Graphics, Media & Games": [NSColor colorWithDeviceRed:1.00 green:0.84 blue:0.24 alpha:1.0],
+            
+            @"Safari & Web": [NSColor colorWithDeviceRed:0.79 green:0.34 blue:0.89 alpha:1.0],
             @"Media": [NSColor colorWithDeviceRed:0.79 green:0.34 blue:0.89 alpha:1.0],
+            
             @"Services": [NSColor colorWithDeviceRed:0.61 green:0.81 blue:0.18 alpha:1.0],
+            @"App Services": [NSColor colorWithDeviceRed:0.61 green:0.81 blue:0.18 alpha:1.0],
+            
+            @"General": [NSColor colorWithDeviceRed:0.61 green:0.61 blue:0.61 alpha:1.0],
             @"Special Events": [NSColor colorWithDeviceRed:0.61 green:0.61 blue:0.61 alpha:1.0],
+
+            @"Developer Tools": [NSColor colorWithDeviceRed:0.99 green:0.45 blue:0.26 alpha:1.0],
             @"Tools": [NSColor colorWithDeviceRed:0.99 green:0.45 blue:0.26 alpha:1.0],
         };
     }
@@ -141,8 +154,8 @@ static NSString const *kResultsTrackKey = @"track";
     if ([identifier isEqualToString:@"MainCell"]) {
         SWSessionsTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
         cellView.titleField.stringValue = cellData[kResultsTitleKey];
-        cellView.sessionIdField.stringValue = [cellData[kResultsSessionIdKey] description];
-        cellView.trackField.stringValue = cellData[kResultsTrackKey];
+        cellView.sessionIdField.stringValue = [cellData[kResultsSessionNumberKey] description];
+        cellView.trackField.stringValue = [NSString stringWithFormat:@"%@ (%@)", cellData[kResultsTrackKey], cellData[kResultsYearKey]];
         cellView.detailColor = standardColors[cellData[kResultsTrackKey]];
         cellView.toolTip = cellData[kResultsDescriptionKey];
         return cellView;
@@ -167,15 +180,18 @@ static NSString const *kResultsTrackKey = @"track";
             }
         }
         while (sqlite3_step(query) == SQLITE_ROW) {
-            int docid = sqlite3_column_int(query, 0);
-            const char *title = (const char*)sqlite3_column_text(query, 1);
-            const char *description = (const char*)sqlite3_column_text(query, 2);
-            const char *track = (const char*)sqlite3_column_text(query, 3);
+            int year = sqlite3_column_int(query, 0);
+            int session_number = sqlite3_column_int(query, 1);
+            const char *title = (const char*)sqlite3_column_text(query, 2);
+            const char *description = (const char*)sqlite3_column_text(query, 3);
+            const char *track = (const char*)sqlite3_column_text(query, 4);
+            
             [mutableResults addObject:@{
-                kResultsSessionIdKey: @(docid),
+                kResultsSessionNumberKey: @(session_number),
                 kResultsTitleKey: [NSString stringWithCString:title encoding:NSUTF8StringEncoding],
                 kResultsDescriptionKey: [NSString stringWithCString:description encoding:NSUTF8StringEncoding],
                 kResultsTrackKey: [NSString stringWithCString:track encoding:NSUTF8StringEncoding],
+                kResultsYearKey: @(year),
             }];
         }
     }
@@ -189,9 +205,9 @@ static NSString const *kResultsTrackKey = @"track";
 
 - (void)SW_launchWebsiteForRow:(NSInteger)row {
     NSDictionary *data = self.results[row];
-    NSNumber *sessionId = data[kResultsSessionIdKey];
+    NSNumber *sessionNumber = data[kResultsSessionNumberKey];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/wwdc/videos/index.php?id=%@", sessionId];
+    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/videos/wwdc/%@/?id=%@", data[kResultsYearKey], sessionNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
