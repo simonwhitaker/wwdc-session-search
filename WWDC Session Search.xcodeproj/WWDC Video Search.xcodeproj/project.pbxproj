@@ -63,7 +63,7 @@
 		F49D62D4186CCE50002B00EC = {
 			isa = PBXGroup;
 			children = (
-				F49D62E6186CCE50002B00EC /* WWDC Video Search */,
+				F49D62E6186CCE50002B00EC /* WWDC Session Search */,
 				F49D62DF186CCE50002B00EC /* Frameworks */,
 				F49D62DE186CCE50002B00EC /* Products */,
 			);
@@ -99,7 +99,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		F49D62E6186CCE50002B00EC /* WWDC Video Search */ = {
+		F49D62E6186CCE50002B00EC /* WWDC Session Search */ = {
 			isa = PBXGroup;
 			children = (
 				F49D62F2186CCE50002B00EC /* SWAppDelegate.h */,
@@ -113,6 +113,7 @@
 				F49D631C186CE26F002B00EC /* Assets */,
 				F49D62E7186CCE50002B00EC /* Supporting Files */,
 			);
+			name = "WWDC Session Search";
 			path = "WWDC Video Search";
 			sourceTree = "<group>";
 		};

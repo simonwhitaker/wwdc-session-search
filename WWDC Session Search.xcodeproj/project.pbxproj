@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F494183B186E397A009C3D21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F494183A186E397A009C3D21 /* QuartzCore.framework */; };
+		F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D62E0186CCE50002B00EC /* Cocoa.framework */; };
+		F49D62EB186CCE50002B00EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F49D62E9186CCE50002B00EC /* InfoPlist.strings */; };
+		F49D62ED186CCE50002B00EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D62EC186CCE50002B00EC /* main.m */; };
+		F49D62F1186CCE50002B00EC /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F49D62EF186CCE50002B00EC /* Credits.rtf */; };
+		F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D62F3186CCE50002B00EC /* SWAppDelegate.m */; };
+		F49D62F7186CCE50002B00EC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49D62F5186CCE50002B00EC /* MainMenu.xib */; };
+		F49D62F9186CCE50002B00EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49D62F8186CCE50002B00EC /* Images.xcassets */; };
+		F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D631A186CD540002B00EC /* libsqlite3.dylib */; };
+		F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = F49D6321186CE49F002B00EC /* sessions.sqlite3 */; };
+		F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D83C67186CEF90006348E6 /* SWMainWindowController.m */; };
+		F4E334B4186E03DA0033D069 /* SWSessionsTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F494183A186E397A009C3D21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F49D62DD186CCE50002B00EC /* WWDC Session Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC Session Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F49D62E0186CCE50002B00EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F49D62E3186CCE50002B00EC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F49D62E4186CCE50002B00EC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F49D62E5186CCE50002B00EC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F49D62E8186CCE50002B00EC /* WWDC Session Search-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WWDC Session Search-Info.plist"; sourceTree = "<group>"; };
+		F49D62EA186CCE50002B00EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F49D62EC186CCE50002B00EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F49D62EE186CCE50002B00EC /* WWDC Session Search-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WWDC Session Search-Prefix.pch"; sourceTree = "<group>"; };
+		F49D62F0186CCE50002B00EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F49D62F2186CCE50002B00EC /* SWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWAppDelegate.h; sourceTree = "<group>"; };
+		F49D62F3186CCE50002B00EC /* SWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWAppDelegate.m; sourceTree = "<group>"; };
+		F49D62F6186CCE50002B00EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F49D62F8186CCE50002B00EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F49D62FF186CCE50002B00EC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F49D631A186CD540002B00EC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F49D6321186CE49F002B00EC /* sessions.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sessions.sqlite3; path = Assets/sessions.sqlite3; sourceTree = SOURCE_ROOT; };
+		F4D83C66186CEF90006348E6 /* SWMainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWMainWindowController.h; sourceTree = "<group>"; };
+		F4D83C67186CEF90006348E6 /* SWMainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWMainWindowController.m; sourceTree = "<group>"; };
+		F4E334B2186E03DA0033D069 /* SWSessionsTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSessionsTableCellView.h; sourceTree = "<group>"; };
+		F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSessionsTableCellView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F49D62DA186CCE50002B00EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F494183B186E397A009C3D21 /* QuartzCore.framework in Frameworks */,
+				F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */,
+				F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F49D62D4186CCE50002B00EC = {
+			isa = PBXGroup;
+			children = (
+				F49D62E6186CCE50002B00EC /* WWDC Session Search */,
+				F49D62DF186CCE50002B00EC /* Frameworks */,
+				F49D62DE186CCE50002B00EC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F49D62DE186CCE50002B00EC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F49D62DD186CCE50002B00EC /* WWDC Session Search.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F49D62DF186CCE50002B00EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F494183A186E397A009C3D21 /* QuartzCore.framework */,
+				F49D631A186CD540002B00EC /* libsqlite3.dylib */,
+				F49D62E0186CCE50002B00EC /* Cocoa.framework */,
+				F49D62FF186CCE50002B00EC /* XCTest.framework */,
+				F49D62E2186CCE50002B00EC /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F49D62E2186CCE50002B00EC /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F49D62E3186CCE50002B00EC /* AppKit.framework */,
+				F49D62E4186CCE50002B00EC /* CoreData.framework */,
+				F49D62E5186CCE50002B00EC /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F49D62E6186CCE50002B00EC /* WWDC Session Search */ = {
+			isa = PBXGroup;
+			children = (
+				F49D62F2186CCE50002B00EC /* SWAppDelegate.h */,
+				F49D62F3186CCE50002B00EC /* SWAppDelegate.m */,
+				F4D83C66186CEF90006348E6 /* SWMainWindowController.h */,
+				F4D83C67186CEF90006348E6 /* SWMainWindowController.m */,
+				F4E334B2186E03DA0033D069 /* SWSessionsTableCellView.h */,
+				F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */,
+				F49D62F5186CCE50002B00EC /* MainMenu.xib */,
+				F49D62F8186CCE50002B00EC /* Images.xcassets */,
+				F49D631C186CE26F002B00EC /* Assets */,
+				F49D62E7186CCE50002B00EC /* Supporting Files */,
+			);
+			path = "WWDC Session Search";
+			sourceTree = "<group>";
+		};
+		F49D62E7186CCE50002B00EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F49D62E8186CCE50002B00EC /* WWDC Session Search-Info.plist */,
+				F49D62E9186CCE50002B00EC /* InfoPlist.strings */,
+				F49D62EC186CCE50002B00EC /* main.m */,
+				F49D62EE186CCE50002B00EC /* WWDC Session Search-Prefix.pch */,
+				F49D62EF186CCE50002B00EC /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F49D631C186CE26F002B00EC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F49D6321186CE49F002B00EC /* sessions.sqlite3 */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F49D62DC186CCE50002B00EC /* WWDC Session Search */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F49D630E186CCE50002B00EC /* Build configuration list for PBXNativeTarget "WWDC Session Search" */;
+			buildPhases = (
+				F49D62D9186CCE50002B00EC /* Sources */,
+				F49D62DA186CCE50002B00EC /* Frameworks */,
+				F49D62DB186CCE50002B00EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WWDC Session Search";
+			productName = "WWDC Video Search";
+			productReference = F49D62DD186CCE50002B00EC /* WWDC Session Search.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F49D62D5186CCE50002B00EC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SW;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Simon Whitaker";
+			};
+			buildConfigurationList = F49D62D8186CCE50002B00EC /* Build configuration list for PBXProject "WWDC Session Search" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F49D62D4186CCE50002B00EC;
+			productRefGroup = F49D62DE186CCE50002B00EC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F49D62DC186CCE50002B00EC /* WWDC Session Search */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F49D62DB186CCE50002B00EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F49D62EB186CCE50002B00EC /* InfoPlist.strings in Resources */,
+				F49D6322186CE49F002B00EC /* sessions.sqlite3 in Resources */,
+				F49D62F9186CCE50002B00EC /* Images.xcassets in Resources */,
+				F49D62F1186CCE50002B00EC /* Credits.rtf in Resources */,
+				F49D62F7186CCE50002B00EC /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F49D62D9186CCE50002B00EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4E334B4186E03DA0033D069 /* SWSessionsTableCellView.m in Sources */,
+				F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */,
+				F49D62ED186CCE50002B00EC /* main.m in Sources */,
+				F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F49D62E9186CCE50002B00EC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F49D62EA186CCE50002B00EC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F49D62EF186CCE50002B00EC /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F49D62F0186CCE50002B00EC /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F49D62F5186CCE50002B00EC /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F49D62F6186CCE50002B00EC /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F49D630C186CCE50002B00EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F49D630D186CCE50002B00EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F49D630F186CCE50002B00EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WWDC Session Search/WWDC Session Search-Prefix.pch";
+				INFOPLIST_FILE = "WWDC Session Search/WWDC Session Search-Info.plist";
+				PRODUCT_NAME = "WWDC Session Search";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F49D6310186CCE50002B00EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WWDC Session Search/WWDC Session Search-Prefix.pch";
+				INFOPLIST_FILE = "WWDC Session Search/WWDC Session Search-Info.plist";
+				PRODUCT_NAME = "WWDC Session Search";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F49D62D8186CCE50002B00EC /* Build configuration list for PBXProject "WWDC Session Search" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F49D630C186CCE50002B00EC /* Debug */,
+				F49D630D186CCE50002B00EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F49D630E186CCE50002B00EC /* Build configuration list for PBXNativeTarget "WWDC Session Search" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F49D630F186CCE50002B00EC /* Debug */,
+				F49D6310186CCE50002B00EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F49D62D5186CCE50002B00EC /* Project object */;
+}
