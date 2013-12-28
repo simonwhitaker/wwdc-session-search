@@ -125,26 +125,24 @@ static NSString const *kResultsTrackKey = @"track";
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     static NSDictionary *standardColors = nil;
     if (standardColors == nil) {
+        /* Map session numbers to colors. 
+         *
+         *   1xx = General / Special Events
+         *   2xx = Frameworks / Essentials
+         *   3xx = Services
+         *   4xx = Tools
+         *   5xx = Graphics and Games
+         *   6xx = Media / Web
+         *   7xx = Core OS
+         */
         standardColors = @{
-            @"Core OS": [NSColor colorWithDeviceRed:0.36 green:0.80 blue:0.75 alpha:1.0],
-            
-            @"Essentials": [NSColor colorWithDeviceRed:0.49 green:0.66 blue:0.99 alpha:1.0],
-            @"Frameworks": [NSColor colorWithDeviceRed:0.49 green:0.66 blue:0.99 alpha:1.0],
-            
-            @"Graphics and Games": [NSColor colorWithDeviceRed:1.00 green:0.84 blue:0.24 alpha:1.0],
-            @"Graphics, Media & Games": [NSColor colorWithDeviceRed:1.00 green:0.84 blue:0.24 alpha:1.0],
-            
-            @"Safari & Web": [NSColor colorWithDeviceRed:0.79 green:0.34 blue:0.89 alpha:1.0],
-            @"Media": [NSColor colorWithDeviceRed:0.79 green:0.34 blue:0.89 alpha:1.0],
-            
-            @"Services": [NSColor colorWithDeviceRed:0.61 green:0.81 blue:0.18 alpha:1.0],
-            @"App Services": [NSColor colorWithDeviceRed:0.61 green:0.81 blue:0.18 alpha:1.0],
-            
-            @"General": [NSColor colorWithDeviceRed:0.61 green:0.61 blue:0.61 alpha:1.0],
-            @"Special Events": [NSColor colorWithDeviceRed:0.61 green:0.61 blue:0.61 alpha:1.0],
-
-            @"Developer Tools": [NSColor colorWithDeviceRed:0.99 green:0.45 blue:0.26 alpha:1.0],
-            @"Tools": [NSColor colorWithDeviceRed:0.99 green:0.45 blue:0.26 alpha:1.0],
+            @1: [NSColor colorWithDeviceRed:0.61 green:0.61 blue:0.61 alpha:1.0],
+            @2: [NSColor colorWithDeviceRed:0.49 green:0.66 blue:0.99 alpha:1.0],
+            @3: [NSColor colorWithDeviceRed:0.61 green:0.81 blue:0.18 alpha:1.0],
+            @4: [NSColor colorWithDeviceRed:0.99 green:0.45 blue:0.26 alpha:1.0],
+            @5: [NSColor colorWithDeviceRed:1.00 green:0.84 blue:0.24 alpha:1.0],
+            @6: [NSColor colorWithDeviceRed:0.79 green:0.34 blue:0.89 alpha:1.0],
+            @7: [NSColor colorWithDeviceRed:0.36 green:0.80 blue:0.75 alpha:1.0],
         };
     }
 
@@ -156,7 +154,16 @@ static NSString const *kResultsTrackKey = @"track";
         cellView.titleField.stringValue = cellData[kResultsTitleKey];
         cellView.sessionIdField.stringValue = [cellData[kResultsSessionNumberKey] description];
         cellView.trackField.stringValue = [NSString stringWithFormat:@"%@ (%@)", cellData[kResultsTrackKey], cellData[kResultsYearKey]];
-        cellView.detailColor = standardColors[cellData[kResultsTrackKey]];
+
+        // Set the color of the detail blob
+        int detailColorKey = [cellData[kResultsSessionNumberKey] intValue] / 100;
+        NSColor *detailColor = standardColors[@(detailColorKey)];
+        if (!detailColor) {
+            detailColor = [NSColor lightGrayColor];
+        }
+        cellView.detailColor = detailColor;
+        
+        // Use the session description as a tooltip
         cellView.toolTip = cellData[kResultsDescriptionKey];
         return cellView;
     }
