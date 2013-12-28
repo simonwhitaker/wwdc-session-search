@@ -1,4 +1,4 @@
-# WWDC-Video-Search
+# WWDC Session Search
 
 An OS X app for quickly searching WWDC videos based on content.
 
