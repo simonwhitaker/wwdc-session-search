@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F494183B186E397A009C3D21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F494183A186E397A009C3D21 /* QuartzCore.framework */; };
 		F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D62E0186CCE50002B00EC /* Cocoa.framework */; };
 		F49D62EB186CCE50002B00EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F49D62E9186CCE50002B00EC /* InfoPlist.strings */; };
 		F49D62ED186CCE50002B00EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F49D62EC186CCE50002B00EC /* main.m */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F494183A186E397A009C3D21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F49D62DD186CCE50002B00EC /* WWDC Video Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC Video Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49D62E0186CCE50002B00EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F49D62E3186CCE50002B00EC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F494183B186E397A009C3D21 /* QuartzCore.framework in Frameworks */,
 				F49D631B186CD540002B00EC /* libsqlite3.dylib in Frameworks */,
 				F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */,
 			);
@@ -77,6 +80,7 @@
 		F49D62DF186CCE50002B00EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F494183A186E397A009C3D21 /* QuartzCore.framework */,
 				F49D631A186CD540002B00EC /* libsqlite3.dylib */,
 				F49D62E0186CCE50002B00EC /* Cocoa.framework */,
 				F49D62FF186CCE50002B00EC /* XCTest.framework */,

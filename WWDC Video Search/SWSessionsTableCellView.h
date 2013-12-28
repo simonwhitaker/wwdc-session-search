@@ -10,8 +10,9 @@
 
 @interface SWSessionsTableCellView : NSTableCellView
 
-@property(assign) IBOutlet NSTextField *titleField;
-@property(assign) IBOutlet NSTextField *trackField;
-@property(assign) IBOutlet NSTextField *sessionIdField;
+@property (nonatomic, weak) IBOutlet NSTextField *titleField;
+@property (nonatomic, weak) IBOutlet NSTextField *trackField;
+@property (nonatomic, weak) IBOutlet NSTextField *sessionIdField;
+@property (nonatomic, strong) NSColor *detailColor;
 
 @end
