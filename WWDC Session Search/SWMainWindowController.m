@@ -19,20 +19,29 @@ static NSString const *kResultsTrackKey = @"track";
 static NSString const *kResultsOffsetsKey = @"offsets";
 
 NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const char *string) {
-    NSUInteger result = 0;
+    /*
+     * UTF-8 represents ASCII characters in a single byte. Characters with a code
+     * point from U+0080 upwards are represented as multiple bytes. The first byte
+     * always has the two most significant bits set (i.e. 11xxxxxx). All subsequent
+     * bytes have the most significant bit set, the next most significant bit unset
+     * (i.e. 10xxxxxx).
+     * 
+     * We use that here to determine character offsets. We step through the first
+     * `byteOffset` bytes of `string`, incrementing the character offset result
+     * every time we come across a byte that doesn't match 10xxxxxx, i.e. where
+     * (byte & 11000000) != 10000000
+     *
+     * See also: http://en.wikipedia.org/wiki/UTF-8#Description
+     */
+    NSUInteger characterOffset = 0;
     for (NSUInteger i = 0; i < byteOffset; i++) {
         char c = string[i];
-        if (c & 0x80) {
-            // We're at the first byte of a UTF-8 character. Move to the last byte.
-            while ((string[i+1] & 0x80) && i < byteOffset) {
-                i++;
-            }
+        if ((c & 0xc0) != 0x80) {
+            characterOffset++;
         }
-        result++;
     }
-    return result;
+    return characterOffset;
 }
-
 
 @interface SWMainWindowController()
 @property (nonatomic) NSString *databaseFilePath;
