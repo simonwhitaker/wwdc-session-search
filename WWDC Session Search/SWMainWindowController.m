@@ -8,14 +8,13 @@
 
 #import "SWMainWindowController.h"
 #import "SWSessionsTableCellView.h"
+#import "SWSession.h"
 
 #import <sqlite3.h>
 
-static NSString const *kResultsYearKey = @"year";
-static NSString const *kResultsSessionNumberKey = @"session_number";
 static NSString const *kResultsTitleKey = @"title";
 static NSString const *kResultsDescriptionKey = @"description";
-static NSString const *kResultsTrackKey = @"track";
+static NSString const *kResultsSessionKey = @"session";
 static NSString const *kResultsOffsetsKey = @"offsets";
 
 static const NSInteger kSDVideoMenuItemTag = 1;
@@ -89,10 +88,8 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
     NSInteger selectedRow = [self.tableView selectedRow];
     NSDictionary *paths;
     if (selectedRow >= 0) {
-        NSDictionary *data = self.results[selectedRow];
-        NSNumber *sessionNumber = data[kResultsSessionNumberKey];
-        NSNumber *year = data[kResultsYearKey];
-        paths = [self.localAssetController assetPathsForSession:[sessionNumber unsignedIntegerValue] year:[year unsignedIntegerValue]];
+        SWSession *session = self.results[selectedRow];
+        paths = [self.localAssetController assetPathsForSession:session.number year:session.year];
     }
 
     switch (menuItem.tag) {
@@ -123,10 +120,8 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
 - (void)sw_openAssetOfType:(NSString*)assetType {
     NSInteger selectedRow = [self.tableView selectedRow];
     if (selectedRow >= 0) {
-        NSDictionary *data = self.results[selectedRow];
-        NSNumber *sessionNumber = data[kResultsSessionNumberKey];
-        NSNumber *year = data[kResultsYearKey];
-        NSString *path = [self.localAssetController assetPathForSession:[sessionNumber unsignedIntegerValue] year:[year unsignedIntegerValue] assetType:assetType];
+        SWSession *session = self.results[selectedRow];
+        NSString *path = [self.localAssetController assetPathForSession:session.number year:session.year assetType:assetType];
         [[NSWorkspace sharedWorkspace] openFile:path];
     }
 }
@@ -221,24 +216,25 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
     }
 
     NSDictionary *cellData = self.results[row];
+    SWSession *session = cellData[kResultsSessionKey];
     
     NSString *identifier = tableColumn.identifier;
     if ([identifier isEqualToString:@"MainCell"]) {
         SWSessionsTableCellView *cellView = [tableView makeViewWithIdentifier:identifier owner:self];
         
         // Get the title, possibly including highlighted search terms
-        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:cellData[kResultsTitleKey]];
+        NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:session.title];
         
         for (NSValue *highlightRangeObj in cellData[kResultsOffsetsKey][kResultsTitleKey]) {
             [title addAttribute:NSBackgroundColorAttributeName value:[[NSColor yellowColor] colorWithAlphaComponent:0.4] range:[highlightRangeObj rangeValue]];
         }
         
         cellView.titleField.attributedStringValue = title;
-        cellView.sessionIdField.stringValue = [cellData[kResultsSessionNumberKey] description];
-        cellView.trackField.stringValue = [NSString stringWithFormat:@"%@ (%@)", cellData[kResultsTrackKey], cellData[kResultsYearKey]];
+        cellView.sessionIdField.stringValue = [@(session.number) description];
+        cellView.trackField.stringValue = [NSString stringWithFormat:@"%@ (%lu)", session.track, (long unsigned)session.year];
 
         // Set the color of the detail blob
-        int detailColorKey = [cellData[kResultsSessionNumberKey] intValue] / 100;
+        NSUInteger detailColorKey = session.number / 100;
         NSColor *detailColor = standardColors[@(detailColorKey)];
         if (!detailColor) {
             detailColor = [NSColor lightGrayColor];
@@ -276,18 +272,19 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
             const char *track = (const char*)sqlite3_column_text(query, 4);
 
             NSMutableDictionary *result = [NSMutableDictionary dictionary];
-            result[kResultsSessionNumberKey] = @(session_number);
-            result[kResultsTitleKey] = [NSString stringWithCString:title encoding:NSUTF8StringEncoding];
-            result[kResultsDescriptionKey] = [NSString stringWithCString:description encoding:NSUTF8StringEncoding];
-            result[kResultsTrackKey] = [NSString stringWithCString:track encoding:NSUTF8StringEncoding];
-            result[kResultsYearKey] = @(year);
+            SWSession *session = [[SWSession alloc] init];
+            session.number = session_number;
+            session.title = @(title);
+            session.sessionDescription = @(description);
+            session.track = @(track);
+            session.year = year;
+            result[kResultsSessionKey] = session;
             
             if (isSearching) {
                 NSMutableDictionary *offsets = [NSMutableDictionary dictionary];
                 static NSArray *resultColumns;
                 if (!resultColumns) {
-                    resultColumns = @[kResultsSessionNumberKey, kResultsTitleKey, kResultsDescriptionKey];
-                
+                    resultColumns = @[[NSNull null], kResultsTitleKey, kResultsDescriptionKey];
                 }
                 NSString *offsetsString = [NSString stringWithCString:(const char*)sqlite3_column_text(query, 5) encoding:NSUTF8StringEncoding];
                 NSArray *offsetComponents = [offsetsString componentsSeparatedByString:@" "];
@@ -333,11 +330,9 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
 }
 
 - (void)SW_launchWebsiteForRow:(NSInteger)row {
-    NSDictionary *data = self.results[row];
-    NSNumber *sessionNumber = data[kResultsSessionNumberKey];
-    NSNumber *year = data[kResultsYearKey];
+    SWSession *session = self.results[row][kResultsSessionKey];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/videos/wwdc/%@/?id=%@", year, sessionNumber];
+    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/videos/wwdc/%lu/?id=%lu", (unsigned long)session.year, (unsigned long)session.number];
     NSURL *url = [NSURL URLWithString:urlString];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
