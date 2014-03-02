@@ -46,21 +46,21 @@ static NSString *const kURIMovie = @"com.apple.quicktime-movie";
 }
 
 - (void)sw_handleSearchUpdates:(NSNotification*)notification {
-    NSLog(@"Search got updates");
+//    NSLog(@"Search got updates");
     [self.query disableUpdates];
     [self sw_registerLocalItems];
     [self.query enableUpdates];
 }
 
 - (void)sw_handleSearchCompletion:(NSNotification*)notification {
-    NSLog(@"Search completed");
+//    NSLog(@"Search completed");
     [self.query disableUpdates];
     [self sw_registerLocalItems];
     [self.query enableUpdates];
 }
 
 - (void)sw_registerLocalItems {
-    NSLog(@"Registering %lu local item(s)", (unsigned long)[self.query resultCount]);
+//    NSLog(@"Registering %lu local item(s)", (unsigned long)[self.query resultCount]);
     NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionary];
     for (NSUInteger i = 0; i < [self.query resultCount]; i++) {
         [self sw_registerLocalItem:[self.query resultAtIndex:i] inMutableDictionary:mutableDictionary];
