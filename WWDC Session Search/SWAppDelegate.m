@@ -27,6 +27,7 @@
     // Configure the main window controller
     self.mainWindowController = [[SWMainWindowController alloc] initWithWindow:self.window];
     self.mainWindowController.tableView = self.tableView;
+    self.mainWindowController.localAssetController = self.localAssetController;
 }
 
 #pragma mark - NSTextFieldDelegate methods

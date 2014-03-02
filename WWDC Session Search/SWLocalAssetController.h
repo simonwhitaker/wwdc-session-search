@@ -18,6 +18,7 @@ extern NSString *const SWLocalAssetControllerDidGetAssetsNotification;
  */
 @interface SWLocalAssetController : NSObject
 
-- (NSDictionary*)filePathsForSession:(NSUInteger)sessionId year:(NSUInteger)year;
+- (NSDictionary*)assetPathsForSession:(NSNumber*)sessionId year:(NSNumber*)year;
+- (NSString*)assetPathForSession:(NSNumber*)sessionId year:(NSNumber*)year assetType:(NSString*)assetType;
 
 @end

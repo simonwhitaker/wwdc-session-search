@@ -18,6 +18,10 @@ static NSString const *kResultsDescriptionKey = @"description";
 static NSString const *kResultsTrackKey = @"track";
 static NSString const *kResultsOffsetsKey = @"offsets";
 
+static const NSInteger kSDVideoMenuItemTag = 1;
+static const NSInteger kHDVideoMenuItemTag = 2;
+static const NSInteger kPDFMenuItemTag = 3;
+
 NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const char *string) {
     /*
      * UTF-8 represents ASCII characters in a single byte. Characters with a code
@@ -81,7 +85,52 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
     }
 }
 
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
+    NSInteger selectedRow = [self.tableView selectedRow];
+    NSDictionary *paths;
+    if (selectedRow >= 0) {
+        NSDictionary *data = self.results[selectedRow];
+        NSNumber *sessionNumber = data[kResultsSessionNumberKey];
+        NSNumber *year = data[kResultsYearKey];
+        paths = [self.localAssetController assetPathsForSession:sessionNumber year:year];
+    }
+
+    switch (menuItem.tag) {
+        case kSDVideoMenuItemTag:
+            return paths[SWLocalAssetTypeSDVideoKey] != nil;
+        case kHDVideoMenuItemTag:
+            return paths[SWLocalAssetTypeHDVideoKey] != nil;
+        case kPDFMenuItemTag:
+            return paths[SWLocalAssetTypePDFKey] != nil;
+    }
+    return [super validateMenuItem:menuItem];
+}
+
 #pragma mark - Event handlers
+
+- (void)openLocalHDVideoAsset:(id)sender {
+    [self sw_openAssetOfType:SWLocalAssetTypeHDVideoKey];
+}
+
+- (void)openLocalPDFAsset:(id)sender {
+    [self sw_openAssetOfType:SWLocalAssetTypePDFKey];
+}
+
+- (void)openLocalSDVideoAsset:(id)sender {
+    [self sw_openAssetOfType:SWLocalAssetTypeSDVideoKey];
+}
+
+- (void)sw_openAssetOfType:(NSString*)assetType {
+    NSInteger selectedRow = [self.tableView selectedRow];
+    if (selectedRow >= 0) {
+        NSDictionary *data = self.results[selectedRow];
+        NSNumber *sessionNumber = data[kResultsSessionNumberKey];
+        NSNumber *year = data[kResultsYearKey];
+        NSString *path = [self.localAssetController assetPathForSession:sessionNumber year:year assetType:assetType];
+        [[NSWorkspace sharedWorkspace] openFile:path];
+//        NSLog(@"Path: %@", path);
+    }
+}
 
 - (void)keyDown:(NSEvent *)theEvent {
     unichar keyCharacter = [[theEvent charactersIgnoringModifiers] characterAtIndex:0];
@@ -287,8 +336,9 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
 - (void)SW_launchWebsiteForRow:(NSInteger)row {
     NSDictionary *data = self.results[row];
     NSNumber *sessionNumber = data[kResultsSessionNumberKey];
+    NSNumber *year = data[kResultsYearKey];
     
-    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/videos/wwdc/%@/?id=%@", data[kResultsYearKey], sessionNumber];
+    NSString *urlString = [NSString stringWithFormat:@"https://developer.apple.com/videos/wwdc/%@/?id=%@", year, sessionNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     [[NSWorkspace sharedWorkspace] openURL:url];
 }
