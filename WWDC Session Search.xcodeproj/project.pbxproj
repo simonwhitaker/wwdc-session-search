@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F48CBD9A18C35B1E00B38741 /* SWLocalAssetController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48CBD9918C35B1E00B38741 /* SWLocalAssetController.m */; };
 		F494183B186E397A009C3D21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F494183A186E397A009C3D21 /* QuartzCore.framework */; };
 		F49D62E1186CCE50002B00EC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49D62E0186CCE50002B00EC /* Cocoa.framework */; };
 		F49D62EB186CCE50002B00EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F49D62E9186CCE50002B00EC /* InfoPlist.strings */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F48CBD9818C35B1E00B38741 /* SWLocalAssetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLocalAssetController.h; sourceTree = "<group>"; };
+		F48CBD9918C35B1E00B38741 /* SWLocalAssetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLocalAssetController.m; sourceTree = "<group>"; };
 		F494183A186E397A009C3D21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F49D62DD186CCE50002B00EC /* WWDC Session Search.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WWDC Session Search.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49D62E0186CCE50002B00EC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -108,6 +111,8 @@
 				F4D83C67186CEF90006348E6 /* SWMainWindowController.m */,
 				F4E334B2186E03DA0033D069 /* SWSessionsTableCellView.h */,
 				F4E334B3186E03DA0033D069 /* SWSessionsTableCellView.m */,
+				F48CBD9818C35B1E00B38741 /* SWLocalAssetController.h */,
+				F48CBD9918C35B1E00B38741 /* SWLocalAssetController.m */,
 				F49D62F5186CCE50002B00EC /* MainMenu.xib */,
 				F49D62F8186CCE50002B00EC /* Images.xcassets */,
 				F49D631C186CE26F002B00EC /* Assets */,
@@ -208,6 +213,7 @@
 				F49D62F4186CCE50002B00EC /* SWAppDelegate.m in Sources */,
 				F49D62ED186CCE50002B00EC /* main.m in Sources */,
 				F4D83C68186CEF90006348E6 /* SWMainWindowController.m in Sources */,
+				F48CBD9A18C35B1E00B38741 /* SWLocalAssetController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
