@@ -92,7 +92,7 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
         NSDictionary *data = self.results[selectedRow];
         NSNumber *sessionNumber = data[kResultsSessionNumberKey];
         NSNumber *year = data[kResultsYearKey];
-        paths = [self.localAssetController assetPathsForSession:sessionNumber year:year];
+        paths = [self.localAssetController assetPathsForSession:[sessionNumber unsignedIntegerValue] year:[year unsignedIntegerValue]];
     }
 
     switch (menuItem.tag) {
@@ -126,9 +126,8 @@ NSUInteger characterOffsetForByteOffsetInUTF8String(NSUInteger byteOffset, const
         NSDictionary *data = self.results[selectedRow];
         NSNumber *sessionNumber = data[kResultsSessionNumberKey];
         NSNumber *year = data[kResultsYearKey];
-        NSString *path = [self.localAssetController assetPathForSession:sessionNumber year:year assetType:assetType];
+        NSString *path = [self.localAssetController assetPathForSession:[sessionNumber unsignedIntegerValue] year:[year unsignedIntegerValue] assetType:assetType];
         [[NSWorkspace sharedWorkspace] openFile:path];
-//        NSLog(@"Path: %@", path);
     }
 }
 

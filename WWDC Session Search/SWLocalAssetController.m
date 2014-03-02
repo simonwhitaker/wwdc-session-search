@@ -37,12 +37,12 @@ static NSString *const kURIMovie = @"com.apple.quicktime-movie";
     return self;
 }
 
-- (NSDictionary*)assetPathsForSession:(NSNumber*)sessionId year:(NSNumber*)year {
-    return self.filePathRegister[year][sessionId];
+- (NSDictionary*)assetPathsForSession:(NSUInteger)sessionId year:(NSUInteger)year {
+    return self.filePathRegister[@(year)][@(sessionId)];
 }
 
-- (NSString*)assetPathForSession:(NSNumber*)sessionId year:(NSNumber*)year assetType:(NSString*)assetType {
-    return self.filePathRegister[year][sessionId][assetType];
+- (NSString*)assetPathForSession:(NSUInteger)sessionId year:(NSUInteger)year assetType:(NSString*)assetType {
+    return [self assetPathsForSession:sessionId year:year][assetType];
 }
 
 - (void)sw_handleSearchUpdates:(NSNotification*)notification {
