@@ -8,9 +8,11 @@
 
 #import "SWAppDelegate.h"
 #import "SWMainWindowController.h"
+#import "SWLocalAssetController.h"
 
 @interface SWAppDelegate() <NSTextFieldDelegate, NSTextDelegate>
 @property (nonatomic) SWMainWindowController *mainWindowController;
+@property (nonatomic) SWLocalAssetController *localAssetController;
 @end
 
 @implementation SWAppDelegate
@@ -19,6 +21,8 @@
     // Configure the search field
     self.searchField.delegate = self;
     [self.searchField becomeFirstResponder];
+    
+    self.localAssetController = [[SWLocalAssetController alloc] init];
     
     // Configure the main window controller
     self.mainWindowController = [[SWMainWindowController alloc] initWithWindow:self.window];
