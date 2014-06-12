@@ -29,7 +29,7 @@ c.execute('CREATE VIRTUAL TABLE session_fts USING fts4(session_number, title, de
 c.execute('CREATE TABLE session (year integer, session_number integer, title text, description text, track text)')
 
 uid = 0
-for year in [2013, 2012]:
+for year in [2014, 2013, 2012]:
     relative_path = '../Vendor/wwdc-session-transcripts/%d/_sessions.yml' % year
     inpath = os.path.join(FILE_ROOT, relative_path)
     data = yaml.load(open(inpath))
