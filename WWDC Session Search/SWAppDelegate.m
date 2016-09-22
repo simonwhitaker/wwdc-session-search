@@ -10,7 +10,7 @@
 #import "SWMainWindowController.h"
 #import "SWLocalAssetController.h"
 
-@interface SWAppDelegate() <NSTextFieldDelegate, NSTextDelegate>
+@interface SWAppDelegate() <NSTextFieldDelegate, NSTextDelegate, NSSearchFieldDelegate>
 @property (nonatomic) SWMainWindowController *mainWindowController;
 @property (nonatomic) SWLocalAssetController *localAssetController;
 @end
